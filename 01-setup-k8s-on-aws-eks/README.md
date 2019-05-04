@@ -2,11 +2,11 @@
 
 * Read about the code in the repo here: BLOG_LINK_HERE
 
-```cd terraform/eks-k8s-cluster'''
+```cd terraform/eks-k8s-cluster```
 
-```terraform init'''
+```terraform init```
 
-```terraform apply'''
+```terraform apply```
 
 ## Notes
 
