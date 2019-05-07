@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  namespace: user-admin
+  name: user-admin-backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  user-admin-backend
+    spec:
+      containers:
+      - name: user-admin-backend
+        image: aleksavtsf/useradmin_server:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: EMBEDDED_MONGO
+          value: "true"  
+        - name: MONGODB_URI
+          value: "mongodb://127.0.0.1/user-admin-db"  
+        - name: MASTER_KEY
+          valueFrom:
+            secretKeyRef:
+              name: master
+              key: key      
+        - name: JWT_SECRET
+          value: "s3cr3t"         
+        
